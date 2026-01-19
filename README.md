@@ -18,9 +18,15 @@ The analysis spans executive, implementation, and lab operations perspectives, e
 - Robust statistics (median, IQR) used for skewed operational data
 
 ### Dashboards
-- Executive Overview
-- Implementation Operations
-- Lab Operations
+
+#### Executive Overview
+![Executive Overview](images/exec-overview.png)
+
+#### Implementation Operations
+![Implementation Operations](images/implementation-operations.png)
+
+#### Lab Operations
+![Lab Operations](images/lab-operations.png)
 
 ### Notes
 - Data are simulated for demonstration purposes
