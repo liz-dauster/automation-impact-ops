@@ -12,10 +12,13 @@ The analysis spans executive, implementation, and lab operations perspectives, e
 - How was analyst effort reallocated following system go-live?
 
 ### Analytical approach
-- Throughput measured as **runs per instrument-hour**
-- Utilization and available capacity analyzed by instrument
-- Analyst workflow assessed via manual vs automated runs
+- Use **runs per instrument-hour** as sample throughput
+- Measure instrument utilization and available capacity
+- Assess analyst workflow via manual vs automated runs
 - Robust statistics (median, IQR) used for skewed operational data
+
+### Data
+The dataset is simulated and included in the `data/` directory to support reproducibility.
 
 ### Dashboards
 
@@ -27,7 +30,3 @@ The analysis spans executive, implementation, and lab operations perspectives, e
 
 #### Lab Operations
 ![Lab Operations](images/lab-operations.png)
-
-### Notes
-- Data are simulated for demonstration purposes
-- This repository includes documentation only; analysis is presented via interactive dashboards
