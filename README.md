@@ -30,3 +30,16 @@ The dataset is simulated and included in the `data/` directory to support reprod
 
 #### Lab Operations
 ![Lab Operations](images/lab-operations.png)
+
+## 🔬 Downtime Risk Analysis (Notebook)
+
+In addition to the Tableau dashboard, this repository includes a structured analysis exploring operational drivers of instrument-day downtime risk.
+
+The notebook:
+- Aggregates run-level data to instrument-day to prevent leakage
+- Evaluates baseline linear risk models
+- Identifies nonlinear operational risk regimes using a shallow decision tree
+- Emphasizes interpretability over predictive performance
+
+### 📓 View the notebook:
+Instrument Downtime Risk Modeling
