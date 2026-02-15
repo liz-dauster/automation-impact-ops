@@ -4,7 +4,7 @@ This project is an applied data science case study evaluating the operational im
 
 The analysis spans executive, implementation, and lab operations perspectives, examining throughput, utilization, available capacity, and analyst workflow changes under operational constraints.
 
-🔗 **Tableau Story (interactive):**
+### 🔗 Tableau Story (interactive):
 [View the Automation Impact Dashboard](https://public.tableau.com/views/AutomationImpact-QCLabOperations/AutomationImpact?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
 
