@@ -4,7 +4,9 @@ This project is an applied data science case study evaluating the operational im
 
 The analysis spans executive, implementation, and lab operations perspectives, examining throughput, utilization, available capacity, and analyst workflow changes under operational constraints.
 
-🔗 **Tableau Story (interactive):** <https://public.tableau.com/views/AutomationImpact-QCLabOperations/AutomationImpact?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link>
+🔗 **Tableau Story (interactive):**
+[View the Automation Impact Dashboard](https://public.tableau.com/views/AutomationImpact-QCLabOperations/AutomationImpact?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+
 
 ### Key questions
 - Did automation improve throughput and cycle time?
@@ -23,13 +25,13 @@ The dataset is simulated and included in the `data/` directory to support reprod
 ### Dashboards
 
 #### Executive Overview
-![Executive Overview](images/exec-overview.png)
+![Executive Overview](assets/exec-overview.png)
 
 #### Implementation Operations
-![Implementation Operations](images/implementation-operations.png)
+![Implementation Operations](assets/implementation-operations.png)
 
 #### Lab Operations
-![Lab Operations](images/lab-operations.png)
+![Lab Operations](assets/lab-operations.png)
 
 ## 🔬 Downtime Risk Analysis (Notebook)
 
@@ -42,4 +44,4 @@ The notebook:
 - Emphasizes interpretability over predictive performance
 
 ### 📓 View the notebook:
-Instrument Downtime Risk Modeling
+[Instrument Downtime Risk Modeling](instrument_downtime_risk_modeling.ipynb)
