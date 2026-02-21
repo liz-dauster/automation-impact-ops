@@ -1,28 +1,64 @@
 ## Automation Impact - QC Lab Operations
 
-This project is an applied data science case study evaluating the operational impact of integrating QC lab instruments with automation software using simulated laboratory data.
+Applied systems analysis and data science case study evaluating workflow automation in a regulated QC laboratory using simulated operational data. 
+This project connects strategy → measurement → modeling to assess structural workflow stability under rising demand.
 
-The analysis spans executive, implementation, and lab operations perspectives, examining throughput, utilization, available capacity, and analyst workflow changes under operational constraints.
+🔎 Executive Summary:
 
-### 🔗 Tableau Story (interactive):
-[View the Automation Impact Dashboard](https://public.tableau.com/views/AutomationImpact-QCLabOperations/AutomationImpact?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+Automation improves throughput and reduces cycle time, but operational stability depends on managing complexity, workload pressure, and capacity saturation risk.
 
+The analysis shows:  
+- Linear models do not explain downtime risk
+- Downtime clusters under nonlinear, high-complexity regimes
+- Structural workflow design, not volume alone, drives stability
+  
+<br>
 
-### Key questions
-- Did automation improve throughput and cycle time?
-- How did instrument utilization and available capacity shift?
-- How was analyst effort reallocated following system go-live?
+### Project Components  
+1️⃣ **Systems Analysis Brief**  
+Structural framing of automation under operational uncertainty
 
-### Analytical approach
-- Use **runs per instrument-hour** as sample throughput
-- Measure instrument utilization and available capacity
-- Assess analyst workflow via manual vs automated runs
-- Robust statistics (median, IQR) used for skewed operational data
+Explores:  
+- Workload–variability–utilization feedback loops
+- Capacity saturation risk
+- Compliance vs. performance trade-offs
+- Causal pathways linking manual friction to instability
 
-### Data
-The dataset is simulated and included in the `data/` directory to support reproducibility.
+📄 [Read the Systems Analysis Brief](QC_Workflow_Automation_Systems_Analysis.pdf)
 
-### Dashboards
+<br>
+
+2️⃣ **Dashboard**  
+Operational performance measurement
+
+Evaluates:
+- Throughput (runs per instrument-hour)
+- Cycle time
+- Instrument utilization
+- Manual entry reduction
+- Failure rate stability
+
+🔗 [View the Interactive Tableau Dashboard](https://public.tableau.com/views/AutomationImpact-QCLabOperations/AutomationImpact?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+
+<br>
+
+3️⃣ **Downtime Risk Modeling**  
+Instrument-day nonlinear risk regimes
+
+Demonstrates:
+- Leakage-aware aggregation
+- Linear model limitations (ROC-AUC ~0.48)
+- Threshold-based regime detection via shallow decision tree
+- Structural drivers of downtime risk
+
+📓 [View the Modeling Notebook](instrument_downtime_risk_modeling.ipynb)
+
+Data  
+Simulated datasets included in /data for reproducibility.
+
+<br>
+
+### Tableau Dashboard Preview:
 
 #### Executive Overview
 ![Executive Overview](assets/exec-overview.png)
@@ -32,16 +68,3 @@ The dataset is simulated and included in the `data/` directory to support reprod
 
 #### Lab Operations
 ![Lab Operations](assets/lab-operations.png)
-
-## 🔬 Downtime Risk Analysis (Notebook)
-
-In addition to the Tableau dashboard, this repository includes a structured analysis exploring operational drivers of instrument-day downtime risk.
-
-The notebook:
-- Aggregates run-level data to instrument-day to prevent leakage
-- Evaluates baseline linear risk models
-- Identifies nonlinear operational risk regimes using a shallow decision tree
-- Emphasizes interpretability over predictive performance
-
-### 📓 View the notebook:
-[Instrument Downtime Risk Modeling](instrument_downtime_risk_modeling.ipynb)
