@@ -1,70 +1,78 @@
-## Automation Impact - QC Lab Operations
+# Automation Impact - QC Lab Operations
 
-Applied systems analysis and data science case study evaluating workflow automation in a regulated QC laboratory using simulated operational data. 
-This project connects strategy → measurement → modeling to assess structural workflow stability under rising demand.
+Systems + modeling case study evaluating workflow automation in a regulated QC lab  
+using simulated operational data.
 
-🔎 Executive Summary:
+Connects strategy → measurement → modeling  
+to test structural workflow stability under rising demand.
 
-Automation improves throughput and reduces cycle time, but operational stability depends on managing complexity, workload pressure, and capacity saturation risk.
+---
 
-The analysis shows:  
-- Linear models do not explain downtime risk
-- Downtime clusters under nonlinear, high-complexity regimes
-- Structural workflow design, not volume alone, drives stability
-  
-<br>
+## Core Insight
 
-### Project Components  
-1️⃣ **Systems Analysis Brief**  
-Structural framing of automation under operational uncertainty
+Automation increases throughput and reduces cycle time.
 
-Explores:  
-- Workload–variability–utilization feedback loops
+Downtime risk is structural.
+It concentrates under nonlinear, high-complexity, high-utilization regimes, 
+not simply higher volume.
+
+---
+
+## Project Components
+
+### 1. Systems Framing
+
+Operational uncertainty analysis:
+
+- Workload–variability–utilization feedback
 - Capacity saturation risk
-- Compliance vs. performance trade-offs
-- Causal pathways linking manual friction to instability
+- Compliance vs performance trade-offs
+- Manual friction → instability pathways
 
-📄 [Read the Systems Analysis Brief](QC_Workflow_Automation_Systems_Analysis.pdf)
+[Systems Analysis Brief](QC_Workflow_Automation_Systems_Analysis.pdf)
 
-<br>
+---
 
-2️⃣ **Dashboard**  
-Operational performance measurement
+### 2. Operational Measurement
 
-Evaluates:
-- Throughput (runs per instrument-hour)
+Tableau dashboard evaluating:
+
+- Throughput (runs / instrument-hour)
 - Cycle time
 - Instrument utilization
 - Manual entry reduction
 - Failure rate stability
 
-🔗 [View the Interactive Tableau Dashboard](https://public.tableau.com/views/AutomationImpact-QCLabOperations/AutomationImpact?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+[Interactive Dashboard](https://public.tableau.com/views/AutomationImpact-QCLabOperations/AutomationImpact?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
-<br>
+---
 
-3️⃣ **Downtime Risk Modeling**  
-Instrument-day nonlinear risk regimes
+### 3. Downtime Risk Modeling
 
-Demonstrates:
+Instrument-day nonlinear regime detection.
+
 - Leakage-aware aggregation
-- Linear model limitations (ROC-AUC ~0.48)
-- Threshold-based regime detection via shallow decision tree
-- Structural drivers of downtime risk
+- Linear baseline (ROC-AUC ~ 0.48)
+- Threshold detection via shallow decision tree
+- Identification of structural instability drivers
 
-📓 [View the Modeling Notebook](instrument_downtime_risk_modeling.ipynb)
+[Modeling Notebook](instrument_downtime_risk_modeling.ipynb)
 
-Data  
-Simulated datasets included in /data for reproducibility.
+---
 
-<br>
+## Data
 
-### Tableau Dashboard Preview:
+Simulated datasets included in `/data` for reproducibility.
 
-#### Executive Overview
+---
+
+## Dashboard Preview
+
+Executive Overview  
 ![Executive Overview](assets/exec-overview.png)
 
-#### Implementation Operations
+Implementation Operations  
 ![Implementation Operations](assets/implementation-operations.png)
 
-#### Lab Operations
+Lab Operations  
 ![Lab Operations](assets/lab-operations.png)
