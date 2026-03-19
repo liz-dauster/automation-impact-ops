@@ -20,7 +20,7 @@ Focus: how workflow automation changes throughput and cycle time, and how to rou
 ### 1) Systems framing (brief)
 A short systems analysis that explains why cycle time becomes unstable under congestion and how automation shifts regime behavior.
 
-- [Systems Analysis Brief](Workflow_Automation_Systems_Analysis.pdf)
+- [Systems Analysis Brief](Workflow_automation_systems_analysis.pdf)
 
 <details>
   <summary><b>Preview: causal network</b></summary>
