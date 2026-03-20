@@ -1,7 +1,6 @@
 # Operational Analytics: Automation Impact and Cycle Time Risk Routing
 
-Systems + measurement + modeling case study using simulated operational data.  
-Focus: how workflow automation changes throughput and cycle time, and how to route work to protect time-based service targets (SLAs).
+Operations analytics project using systems analysis and modeling to improve workflow efficiency, cycle time, and SLA performance.
 
 ---
 
@@ -9,9 +8,7 @@ Focus: how workflow automation changes throughput and cycle time, and how to rou
 
 - **Systems thinking:** feedback loops linking workload, variability, utilization, and cycle time
 - **Operational measurement:** dashboards that quantify process changes over time
-- **Operational ML:** a risk-ranking model that routes the top 10% highest-risk work to a priority queue and concentrates late work (service-target misses)
-
-*Note: This project uses simulated data designed to reflect realistic operational patterns; the goal is to demonstrate methodology and decision framing.*
+- **Predictive modeling for operations:** a model that identifies high-risk work and prioritizes it to reduce service-target misses
 
 ---
 
@@ -56,9 +53,9 @@ Interactive dashboard evaluating:
 
 ---
 
-### 3) Operational ML notebook (priority queue routing)
-Builds an intake risk score to route the **top 10%** highest-risk work items to a priority queue.
-- Target: **P90 slow cycle time** within comparable work (instrument type × test type)
+### 3) Predictive modeling for operations notebook (priority queue routing)
+Identifies the top 10% highest-risk work and prioritizes it to a priority queue to reduce service-target misses.
+- Target: identifying **high-risk long cycle time** (P90)
 - Validation: **instrument-held-out cross-validation** (GroupKFold)
 - Stakeholder view: derived service-target threshold + **late-rate lift** in the routed queue
 
