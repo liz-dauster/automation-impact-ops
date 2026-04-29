@@ -60,30 +60,37 @@ Model identifies high-risk long-cycle items and simulates a priority routing pol
 
 ## Reproducibility
 
-To run the notebook locally:
+This project can be run locally using the provided conda environment.
 
 ```bash
-# 1. Create the conda environment from the project file
+# 1. Create environment
 conda env create -f environment.yml
 
-# 2. Activate the environment
+# 2. Activate environment
 conda activate ops-ml
 
-# 3. Launch Jupyter Notebook
+# 3. Launch Jupyter
 jupyter notebook
 ```
 
-Then open:
+Open:
 
 ```text
 ops-ml_sla-routing.ipynb
 ```
 
-The notebook uses the simulated dataset located at:
+Then:
+
+- Select the `ops-ml` kernel  
+- Run all cells (`Kernel → Restart & Run All`)
+
+The notebook uses the dataset:
 
 ```text
 data/qc_instrument_usage.csv
 ```
+
+> Note: All file paths are relative to the repository root.
 
 ---
 
