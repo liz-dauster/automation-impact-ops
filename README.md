@@ -1,85 +1,93 @@
-# Operational Analytics: Automation Impact and Cycle Time Risk Routing
+# Operational Analytics: Automation Impact & Cycle-Time Risk Routing
 
-Operations analytics project using systems analysis and modeling to improve workflow efficiency, cycle time, and SLA performance.
-
----
-
-## What this project shows
-
-- **Systems thinking:** feedback loops linking workload, variability, utilization, and cycle time
-- **Operational measurement:** dashboards that quantify process changes over time
-- **Predictive modeling for operations:** a model that identifies high-risk work and prioritizes it to reduce service-target misses
+End-to-end operations analytics project showing how workflow automation changes system behavior, and how risk-based routing can reduce service-target misses.
 
 ---
 
-## Artifacts
+## Results at a glance
+- Built a systems analysis of congestion dynamics (workload, utilization, variability, cycle time).
+- Developed an operations dashboard to track throughput, cycle time, and manual-work reduction across implementation phases.
+- Trained a risk model to identify high-risk long-cycle work (P90) and route top-risk items to priority handling.
+- Used instrument-held-out GroupKFold evaluation to reduce leakage risk in operations data.
+
+---
+
+## What this project demonstrates
+- **Systems thinking:** Causal feedback loops linking demand, capacity, variability, and delay.
+- **Operational measurement:** Phase-aware KPIs showing stability vs. volatility over time.
+- **Predictive decision support:** Risk-based queue routing to proactively reduce late work.
+
+---
+
+## Project artifacts
 
 ### 1) Systems framing (brief)
-A short systems analysis that explains why cycle time becomes unstable under congestion and how automation shifts regime behavior.
+A concise systems analysis explaining why cycle time destabilizes under congestion and how automation changes the operating regime.
 
-- [Systems Analysis Brief](Workflow_automation_systems_analysis.pdf)
-
-<details>
-  <summary><b>Preview: causal network</b></summary>
-
+- [Systems Analysis Brief](Workflow_automation_systems_analysis.pdf)  
+- Preview: causal network  
   ![Causal network](assets/causal-network.png)
 
-</details>
-
----
-
 ### 2) Operational measurement (Tableau)
-Interactive dashboard evaluating:
-- throughput and cycle time trends
+Interactive dashboard covering:
+- throughput and cycle-time trends
 - utilization signals
-- manual work reduction
-- stability of outcomes across phases
+- manual-work reduction
+- outcome stability by implementation phase
 
 - [Interactive Dashboard](https://public.tableau.com/views/AutomationImpact-QCLabOperations/AutomationImpact?:language=en-US&:display_count=n&:origin=viz_share_link)
 
-<details>
-  <summary><b>Dashboard previews</b></summary>
+**Executive overview**  
+![Executive Overview](assets/exec-overview.png)
 
-  **Executive overview**  
-  ![Executive Overview](assets/exec-overview.png)
+**Implementation operations**  
+![Implementation Operations](assets/implementation-operations.png)
 
-  **Implementation operations**  
-  ![Implementation Operations](assets/implementation-operations.png)
+**Operations view**  
+![Operations](assets/lab-operations.png)
 
-  **Operations view**  
-  ![Operations](assets/lab-operations.png)
+### 3) Predictive modeling notebook (priority routing)
+Model identifies high-risk long-cycle items and simulates a priority routing policy.
 
-</details>
+- Target: **high-risk long cycle time (P90)**  
+- Validation: **instrument-held-out GroupKFold**  
+- Decision lens: service-target threshold + late-rate lift in routed queue  
+- [Notebook: Ops ML routing model](ops-ml_sla-routing.ipynb)
 
----
-
-### 3) Predictive modeling for operations notebook (priority queue routing)
-Identifies the top 10% highest-risk work and prioritizes it to a priority queue to reduce service-target misses.
-- Target: identifying **high-risk long cycle time** (P90)
-- Validation: **instrument-held-out cross-validation** (GroupKFold)
-- Stakeholder view: derived service-target threshold + **late-rate lift** in the routed queue
-
-- [Notebook: Ops ML routing model](/ops-ml_sla-routing.ipynb)
-
-<details>
-  <summary><b>Notebook visuals</b></summary>
-
-  ![ROC + service target view](assets/ops-ml-visuals.png)
-
-</details>
+![ROC + service target view](assets/ops-ml-visuals.png)
 
 ---
 
-## Data
+## Reproducibility
 
-Simulated dataset stored in:
-- `data/qc_instrument_usage.csv`
-
----
-
-## Run locally (conda)
+To run the notebook locally:
 
 ```bash
+# 1. Create the conda environment from the project file
 conda env create -f environment.yml
+
+# 2. Activate the environment
 conda activate ops-ml
+
+# 3. Launch Jupyter Notebook
 jupyter notebook
+```
+
+Then open:
+
+```text
+ops-ml_sla-routing.ipynb
+```
+
+The notebook uses the simulated dataset located at:
+
+```text
+data/qc_instrument_usage.csv
+```
+
+---
+
+## Limitations & next steps
+- Simulated data limits direct real-world generalization.
+- Next: add calibration, temporal validation, and demand-shift policy tests.
+- Extension: compare top-risk-only vs. capacity-aware routing.
