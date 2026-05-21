@@ -1,4 +1,4 @@
-# Operational Analytics: Automation Impact & Cycle-Time Risk Routing
+# ⚙️ Operational Analytics: Automation Impact & Cycle-Time Risk Routing
 
 End-to-end operations analytics project showing how workflow automation changes system behavior, and how risk-based routing can reduce service-target misses.
 
