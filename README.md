@@ -57,6 +57,13 @@ Model identifies high-risk long-cycle items and simulates a priority routing pol
 ![ROC + service target view](assets/ops-ml-visuals.png)
 
 ---
+## Dataset Design
+
+Because real laboratory operations data is typically proprietary, this project uses a synthetic dataset designed to represent common workflow patterns in regulated lab environments.
+
+The simulation includes instrument type, test type, operator, product family, manual-entry status, automation phase, downtime flags, run duration, and turnaround time.
+
+The dataset is not intended to estimate real-world ROI. It is used to demonstrate how operational data can be structured, monitored, and modeled to prioritize time-consuming work.
 
 ## Reproducibility
 
