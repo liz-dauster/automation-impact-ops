@@ -85,11 +85,11 @@ Uses **instrument-held-out GroupKFold** cross-validation to test whether the mod
 
 Rather than optimizing overall accuracy, the workflow evaluates whether the **top 10% highest-risk work items** contain a higher concentration of future delays than the full workload.
 
+* [Notebook: Operational Risk Routing](03_ops_ml_sla-routing.ipynb)
+
 ![ROC and SLA Lift](assets/roc_and_sla_lift.png)
 
 ![Priority Queue Routing](assets/priority_queue_confusion_matrix.png)
-
-* [Notebook: Operational Risk Routing](03_ops_ml_sla-routing.ipynb)
 
 ---
 
