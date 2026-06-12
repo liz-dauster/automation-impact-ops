@@ -1,107 +1,132 @@
 # ⚙️ Operational Analytics: Automation Impact & Cycle-Time Risk Routing
 
-End-to-end operations analytics project showing how workflow automation changes system behavior, and how risk-based routing can reduce service-target misses.
+End-to-end operations analytics project demonstrating how operational workflow data can be structured, monitored, and modeled to support service-level performance.
 
 ---
 
-## Results at a glance
-- Built a systems analysis of congestion dynamics (workload, utilization, variability, cycle time).
-- Developed an operations dashboard to track throughput, cycle time, and manual-work reduction across implementation phases.
-- Trained a risk model to identify high-risk long-cycle work (P90) and route top-risk items to priority handling.
-- Used instrument-held-out GroupKFold evaluation to reduce leakage risk in operations data.
+## Business Question
+
+Can operational telemetry identify work at elevated risk of extended cycle time early enough to support proactive routing decisions?
+
+This project uses a synthetic laboratory operations dataset to demonstrate:
+
+* KPI design for automation impact monitoring
+* dashboard-based operational measurement
+* cycle-time risk modeling
+* top-risk priority queue routing
 
 ---
 
-## What this project demonstrates
-- **Systems thinking:** Causal feedback loops linking demand, capacity, variability, and delay.
-- **Operational measurement:** Phase-aware KPIs showing stability vs. volatility over time.
-- **Predictive decision support:** Risk-based queue routing to proactively reduce late work.
+## Key Takeaways
+
+* Designed a reproducible synthetic operations workflow with documented assumptions.
+* Built weekly KPIs for throughput, utilization, downtime, manual-entry rate, turnaround time, and failure rate.
+* Created dashboards to compare operational patterns before and after a simulated automation implementation.
+* Trained a risk model to rank incoming work by probability of falling into the slowest 10% of cycle times.
+* Evaluated a priority-routing policy that routes the top 10% highest-risk work items for earlier review.
 
 ---
 
-## Project artifacts
+## Workflow
 
-### 1) Systems framing (brief)
-A concise systems analysis explaining why cycle time destabilizes under congestion and how automation changes the operating regime.
+| Step                      | Purpose                                                       | Artifact                      |
+| ------------------------- | ------------------------------------------------------------- | ----------------------------- |
+| **1. Generate data**      | Create synthetic event-level lab operations data              | `01_generate_data.ipynb`      |
+| **2. Engineer KPIs**      | Aggregate raw events into weekly dashboard metrics            | `02_eda_and_kpis.ipynb`       |
+| **3. Model risk routing** | Rank work by cycle-time risk and evaluate routing performance | `03_ops_ml_sla-routing.ipynb` |
 
-- [Systems Analysis Brief](Workflow_automation_systems_analysis.pdf)  
-- Preview: causal network  
-  ![Causal network](assets/causal-network.png)
+---
 
-### 2) Operational measurement (Tableau)
-Interactive dashboard covering:
-- throughput and cycle-time trends
-- utilization signals
-- manual-work reduction
-- outcome stability by implementation phase
+## 1) Systems Framing
 
-- [Interactive Dashboard](https://public.tableau.com/views/AutomationImpact-QCLabOperations/AutomationImpact?:language=en-US&:display_count=n&:origin=viz_share_link)
+A business systems analysis describes how demand, capacity, utilization, variability, and queueing behavior affect cycle time.
 
-**Executive overview**  
+* [Systems Analysis Brief](Workflow_automation_systems_analysis.pdf)
+
+![Causal network](assets/causal-network.png)
+
+---
+
+## 2) Operational Monitoring
+
+Interactive Tableau dashboard tracking:
+
+* throughput
+
+* cycle time
+
+* utilization
+
+* manual-work rate
+
+* downtime
+
+* implementation-phase patterns
+
+* [Interactive Dashboard](https://public.tableau.com/views/AutomationImpact-QCLabOperations/AutomationImpact?:language=en-US&:display_count=n&:origin=viz_share_link)
+
 ![Executive Overview](assets/exec-overview.png)
 
-**Implementation operations**  
-![Implementation Operations](assets/implementation-operations.png)
+---
 
-**Operations view**  
-![Operations](assets/lab-operations.png)
+## 3) Cycle-Time Risk Routing
 
-### 3) Predictive modeling notebook (priority routing)
-Model identifies high-risk long-cycle items and simulates a priority routing policy.
+The modeling notebook evaluates whether intake data can be used to rank work by cycle-time risk.
 
-- Target: **high-risk long cycle time (P90)**  
-- Validation: **instrument-held-out GroupKFold**  
-- Decision lens: service-target threshold + late-rate lift in routed queue  
-- [Notebook: Ops ML routing model](ops-ml_sla-routing.ipynb)
+**Target**
 
-![ROC + service target view](assets/ops-ml-visuals.png)
+Predict risk of falling into the **slowest 10% of cycle times (P90)** within comparable work groups.
+
+**Validation**
+
+Uses **instrument-held-out GroupKFold** cross-validation to test whether the model generalizes beyond any single instrument.
+
+**Decision Framing**
+
+Rather than optimizing overall accuracy, the workflow evaluates whether the **top 10% highest-risk work items** contain a higher concentration of future delays than the full workload.
+
+![ROC and SLA Lift](assets/roc_and_sla_lift.png)
+
+![Priority Queue Routing](assets/priority_queue_confusion_matrix.png)
+
+* [Notebook: Operational Risk Routing](03_ops_ml_sla-routing.ipynb)
 
 ---
-## Dataset Design
-
-Because real laboratory operations data is typically proprietary, this project uses a synthetic dataset designed to represent common workflow patterns in regulated lab environments.
-
-The simulation includes instrument type, test type, operator, product family, manual-entry status, automation phase, downtime flags, run duration, and turnaround time.
-
-The dataset is not intended to estimate real-world ROI. It is used to demonstrate how operational data can be structured, monitored, and modeled to prioritize time-consuming work.
 
 ## Reproducibility
 
 This project can be run locally using the provided conda environment.
 
 ```bash
-# 1. Create environment
 conda env create -f environment.yml
-
-# 2. Activate environment
 conda activate ops-ml
-
-# 3. Launch Jupyter
 jupyter notebook
 ```
 
-Open:
+Run the notebooks in order:
 
 ```text
-ops-ml_sla-routing.ipynb
+01_generate_data.ipynb
+02_eda_and_kpis.ipynb
+03_ops_ml_sla-routing.ipynb
 ```
 
-Then:
-
-- Select the `ops-ml` kernel  
-- Run all cells (`Kernel → Restart & Run All`)
-
-The notebook uses the dataset:
-
-```text
-data/qc_instrument_usage.csv
-```
-
-> Note: All file paths are relative to the repository root.
+All file paths are relative to the repository root.
 
 ---
 
-## Limitations & next steps
-- Simulated data limits direct real-world generalization.
-- Next: add calibration, temporal validation, and demand-shift policy tests.
-- Extension: compare top-risk-only vs. capacity-aware routing.
+## Limitations & Next Steps
+
+**Limitations**
+
+* Uses simulated operational data rather than production records.
+* Automation effects are incorporated through documented simulation assumptions.
+* Results demonstrate methodology and decision framing rather than real-world causal impact or ROI.
+
+**Potential extensions**
+
+* probability calibration
+* temporal validation
+* demand-shift scenario testing
+* capacity-aware routing policies
+* comparison of top-risk routing vs. staffing-constrained routing
